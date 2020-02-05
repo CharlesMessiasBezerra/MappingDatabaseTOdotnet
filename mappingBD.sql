@@ -10,7 +10,7 @@
 --4º - Grid - Front 
 --exec mappingDB 'RAV09000',4; 
     
-create procedure mappingDB      
+alter procedure mappingDB      
  @obj varchar(100) ,    
  @tipoFiltro int = 1    
 as          
@@ -76,9 +76,9 @@ begin
        WHEN 'nchar'          then 'string'           
        WHEN 'bit'            then 'Boolean'  + (case when @isnull = 1 then '?'  else '' end)          
        WHEN 'tinyint'        then 'byte'           
-       WHEN 'smallint'       then 'Int16'  + (case when @isnull = 1 then '?'  else '' end)          
+       WHEN 'smallint'       then 'short'  + (case when @isnull = 1 then '?'  else '' end)          
        WHEN 'int'            then 'int'  + (case when @isnull = 1 then '?'  else '' end)          
-       WHEN 'bigint'         then 'Int64' + (case when @isnull = 1 then '?'  else '' end)          
+       WHEN 'bigint'         then 'Int' + (case when @isnull = 1 then '?'  else '' end)          
        WHEN 'smallmoney'     then 'decimal'            
        WHEN 'money'          then 'decimal'            
        WHEN 'numeric'        then 'decimal'            
@@ -154,7 +154,7 @@ begin
        WHEN 'nchar'          then 'string'           
        WHEN 'bit'            then 'Boolean'  + (case when @isnull = 1 then '?'  else '' end)          
        WHEN 'tinyint'        then 'byte'           
-       WHEN 'smallint'       then 'Int16'  + (case when @isnull = 1 then '?'  else '' end)          
+       WHEN 'smallint'       then 'short'  + (case when @isnull = 1 then '?'  else '' end)          
        WHEN 'int'            then 'int'  + (case when @isnull = 1 then '?'  else '' end)          
        WHEN 'bigint'         then 'Int64' + (case when @isnull = 1 then '?'  else '' end)          
        WHEN 'smallmoney'     then 'decimal'            
