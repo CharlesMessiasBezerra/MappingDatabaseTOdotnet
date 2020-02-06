@@ -74,7 +74,7 @@ begin
        WHEN 'char'     then 'string'                         
        WHEN 'nvarchar'       then 'string'                  
        WHEN 'nchar'          then 'string'                   
-       WHEN 'bit'            then 'Boolean'  + (case when @isnull = 1 then '?'  else '' end)                  
+       WHEN 'bit'            then 'bool'  + (case when @isnull = 1 then '?'  else '' end)                  
        WHEN 'tinyint'        then 'byte'                   
        WHEN 'smallint'       then 'short'  + (case when @isnull = 1 then '?'  else '' end)                  
        WHEN 'int'            then 'int'  + (case when @isnull = 1 then '?'  else '' end)                  
@@ -115,9 +115,7 @@ begin
  insert into @result values ('public class '+@obj+'Dto')                  
  insert into @result  values ('{')                  
  insert into @result  values (' ')                  
-                  
-            
-                  
+                                                
  --Declara cursor               
  DECLARE cTeste CURSOR FOR                  
                   
@@ -152,7 +150,7 @@ begin
        WHEN 'char'     then 'string'                         
        WHEN 'nvarchar'       then 'string'                  
        WHEN 'nchar'          then 'string'                   
-       WHEN 'bit'            then 'Boolean'  + (case when @isnull = 1 then '?'  else '' end)                  
+       WHEN 'bit'            then 'bool'  + (case when @isnull = 1 then '?'  else '' end)                  
        WHEN 'tinyint'        then 'byte'                   
        WHEN 'smallint'       then 'short'  + (case when @isnull = 1 then '?'  else '' end)                  
        WHEN 'int'            then 'int'  + (case when @isnull = 1 then '?'  else '' end)                  
