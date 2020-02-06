@@ -67,8 +67,8 @@ begin
                   
                   
             
-                  
- set @titpodotnet = (case @tipo                  
+
+	    set @titpodotnet = (case @tipo                  
        WHEN 'binary'     then 'byte'                  
        WHEN 'varchar'    then 'string'                  
        WHEN 'char'     then 'string'                         
@@ -78,16 +78,16 @@ begin
        WHEN 'tinyint'        then 'byte'                   
        WHEN 'smallint'       then 'short'  + (case when @isnull = 1 then '?'  else '' end)                  
        WHEN 'int'            then 'int'  + (case when @isnull = 1 then '?'  else '' end)                  
-       WHEN 'bigint'         then 'Int' + (case when @isnull = 1 then '?'  else '' end)                  
-       WHEN 'smallmoney'     then 'decimal'                    
-       WHEN 'money'          then 'decimal'                    
-       WHEN 'numeric'        then 'decimal'                    
-       WHEN 'decimal'        then 'decimal'                    
-       WHEN 'float'          then 'double'                    
+       WHEN 'bigint'         then 'Int64' + (case when @isnull = 1 then '?'  else '' end)                  
+       WHEN 'smallmoney'     then 'decimal' + (case when @isnull = 1 then '?'  else '' end)                                       
+       WHEN 'money'          then 'decimal' + (case when @isnull = 1 then '?'  else '' end)                                     
+       WHEN 'numeric'        then 'decimal' + (case when @isnull = 1 then '?'  else '' end)                                     
+       WHEN 'decimal'        then 'decimal' + (case when @isnull = 1 then '?'  else '' end)                                     
+       WHEN 'float'          then 'double'  + (case when @isnull = 1 then '?'  else '' end)                                                       
        WHEN 'smalldatetime'  then 'DateTime'  + (case when @isnull = 1 then '?'  else '' end)                  
        WHEN 'datetime'       then 'DateTime' + (case when @isnull = 1 then '?'  else '' end)                  
        else 'Tipo não Encontrado'                   
-       end)                  
+       end)         
                   
  insert into @result  values ('[Column("'+ upper(left(@coluna,1))+''+ RIGHT(@coluna, len(@coluna) -1 ) +'")]')                  
  insert into @result  values ('public '+ @titpodotnet +' '+ @coluna+ ' { get; set; }')                  
@@ -155,11 +155,11 @@ begin
        WHEN 'smallint'       then 'short'  + (case when @isnull = 1 then '?'  else '' end)                  
        WHEN 'int'            then 'int'  + (case when @isnull = 1 then '?'  else '' end)                  
        WHEN 'bigint'         then 'Int64' + (case when @isnull = 1 then '?'  else '' end)                  
-       WHEN 'smallmoney'     then 'decimal'                    
-       WHEN 'money'          then 'decimal'                    
-       WHEN 'numeric'        then 'decimal'                    
-       WHEN 'decimal'        then 'decimal'                    
-       WHEN 'float'          then 'double'                    
+       WHEN 'smallmoney'     then 'decimal' + (case when @isnull = 1 then '?'  else '' end)                                       
+       WHEN 'money'          then 'decimal' + (case when @isnull = 1 then '?'  else '' end)                                     
+       WHEN 'numeric'        then 'decimal' + (case when @isnull = 1 then '?'  else '' end)                                     
+       WHEN 'decimal'        then 'decimal' + (case when @isnull = 1 then '?'  else '' end)                                     
+       WHEN 'float'          then 'double'  + (case when @isnull = 1 then '?'  else '' end)                                                       
        WHEN 'smalldatetime'  then 'DateTime'  + (case when @isnull = 1 then '?'  else '' end)                  
        WHEN 'datetime'       then 'DateTime' + (case when @isnull = 1 then '?'  else '' end)                  
        else 'Tipo não Encontrado'                   
